@@ -15,16 +15,23 @@ public class ThreadedReverseGreeting {
 
 	private static void createThreads(int a) {
 		// TODO Auto-generated method stub
-		if (a > 50) {
+		if (a > 49) {
 
 		} else {
+			
 			Thread t = new Thread(() -> {
 				createThreads(a + 1);
 			});
 			t.start();
-			System.out.println(a);
+			try {
+				t.join();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 		}
+		System.out.println(a);
 	}
 
 }
